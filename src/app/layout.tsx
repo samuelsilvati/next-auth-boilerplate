@@ -1,4 +1,4 @@
-import './globals.css'
+import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <main className="bg-gray-900">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   )
