@@ -11,7 +11,7 @@ const nextAuthOptions: NextAuthOptions = {
       },
 
       async authorize(credentials, req) {
-        const res = await fetch(`${process.env.API_URL}/auth`, {
+        const res = await fetch(`${process.env.API_URL}/signin`, {
           method: 'POST',
           body: JSON.stringify(credentials),
           headers: { 'Content-Type': 'application/json' },
@@ -26,6 +26,13 @@ const nextAuthOptions: NextAuthOptions = {
       },
     }),
   ],
+  session: {
+    strategy: 'jwt',
+    maxAge: 7 * 24 * 60 * 60,
+  },
+  jwt: {
+    maxAge: 7 * 24 * 60 * 60,
+  },
   callbacks: {
     async jwt({ token, user }) {
       return { ...token, ...user }
